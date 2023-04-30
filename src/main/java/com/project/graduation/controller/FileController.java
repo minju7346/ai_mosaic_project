@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,6 +20,7 @@ public class FileController {
     @GetMapping("/")
     public void asd() {
 
+        //return "index"
     }
 
     @GetMapping("/upload")
@@ -32,10 +32,6 @@ public class FileController {
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file ) throws IOException {
         fileService.saveFile(file);
-
-        ///for (MultipartFile multipartFile : files) {@RequestParam("files") List<MultipartFile> files
-            //fileService.saveFile(multipartFile);
-       // }
 
         return "redirect:/";
     }

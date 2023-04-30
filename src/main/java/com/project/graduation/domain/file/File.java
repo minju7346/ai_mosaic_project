@@ -8,7 +8,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Entity
-@Setter
 public class File {
 
     @Id
