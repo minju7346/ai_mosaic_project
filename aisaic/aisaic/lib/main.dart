@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screen1.dart';
+import 'login.dart';
 
 void main () => runApp(const MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: { //Write Page with route 
         // '/' :(context) => main(),
-        '/1' :(context) => const Screen1(),
+        '/1' :(context) => const login(),
         // '/c' :(context) => Screen3()
       },
       debugShowCheckedModeBanner: false,
