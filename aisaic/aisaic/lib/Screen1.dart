@@ -7,8 +7,8 @@ class Screen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('please login'),
-        leading: Icon(Icons.menu),
+        title: const Text('please login'),
+        leading: const Icon(Icons.menu),
       ),
       body: const Center(
         child: Column(

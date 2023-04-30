@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Screen1.dart';
+import 'screen1.dart';
 
-void main () => runApp(MyApp());
+void main () => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: { //Write Page with route 
         // '/' :(context) => main(),
-        '/1' :(context) => Screen1(),
+        '/1' :(context) => const Screen1(),
         // '/c' :(context) => Screen3()
       },
       debugShowCheckedModeBanner: false,
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomePage(), //First page to start
+      home: const WelcomePage(), //First page to start
     );
 }
 }
