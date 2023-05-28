@@ -1,13 +1,15 @@
 package com.project.graduation.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RequiredArgsConstructor
 @RestController
 public class MainController {
 
+
+    private Object awsS3Service;
 
     @GetMapping("/start")
     public String printStartPage() {
@@ -23,5 +25,6 @@ public class MainController {
     public String printLoginPage() {
         return "login";
     }
+
 
 }
