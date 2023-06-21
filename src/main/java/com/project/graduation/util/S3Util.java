@@ -20,7 +20,7 @@ import com.amazonaws.util.IOUtils;
 @Component
 public class S3Util {
 
-    private static final String bucketName = "ai-mozaic-img";
+    private static final String bucketName = "ai-img-bucket";
 
     private AmazonS3 s3Client;
 
