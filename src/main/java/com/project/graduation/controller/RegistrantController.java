@@ -1,19 +1,25 @@
 package com.project.graduation.controller;
 
+import com.project.graduation.domain.registrant.Registrant;
+import com.project.graduation.repository.RegistrantRepository;
+import com.project.graduation.service.RegistrantService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RequiredArgsConstructor
-@RestController
+import java.util.List;
+
+@RequiredArgsConstructor// final 객체를 Constructor Injection 해줌. (Autowired 역할)
+@RestController //JSON 형태 결과값을 반환해줌 (@ResponseBody가 필요없음)
 @RequestMapping("registrant")
 public class RegistrantController {
 
-    @GetMapping("/list")
-    public String printListPage() {
-        return "regi-list";
+    private final RegistrantService registrantService;
+    private final RegistrantRepository registrantRepository;
+
+    @GetMapping("/print")
+    public List<Registrant> findAllMember(@RequestHeader("Authorization") String token) {
+        String user_id = token.replace("TOKEN_", "");
+        return registrantRepository.findByVariable(user_id);
     }
 
     @GetMapping("/add")
@@ -28,14 +34,15 @@ public class RegistrantController {
     }
 
     @PostMapping("/save") //이름과 함께 파일 불러와서 저장
-    public String saveRegistrant() {
-        //save service(db에 파일과 사용자가 입력한 name으로 registrant테이블에 저장)
-        return "regi-end";
+    public void saveRegistrant(@RequestBody Registrant registrant, @RequestHeader("Authorization") String token) {
+        String user_id = token.replace("TOKEN_", "");
+        Registrant r = Registrant.builder().user_id(user_id).name(registrant.getName()).file_name(registrant.getFile_name()).build();
+        registrantService.saveRegistrant(r);
     }
 
     @GetMapping("/delete")
-    public String deleteRegistrant() {
+    public void deleteRegistrant() {
         //delete service
-        return "redirect:/";
     }
+
 }

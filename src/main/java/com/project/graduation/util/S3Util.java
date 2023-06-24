@@ -38,8 +38,12 @@ public class S3Util {
 
     }
 
-    public void uploadPhoto(String key, File file) {
-        this.s3Client.putObject(bucketName, key, file);
+    public void uploadImage(String key, File file) {
+        this.s3Client.putObject(bucketName+"/img", key, file);
+    }
+
+    public void uploadVideo(String key, File file) {
+        this.s3Client.putObject(bucketName+"/video", key, file);
     }
 
     public byte[] downloadPhoto(String key) {

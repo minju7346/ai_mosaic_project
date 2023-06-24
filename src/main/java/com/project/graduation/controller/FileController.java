@@ -30,7 +30,7 @@ public class FileController {
         return "redirect:/";
     }
 
-    @PostMapping("/upload") //파일을 AWS S3에 업로드
+    @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file ) throws IOException {
         fileService.saveFile(file);
 

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
-@Entity
+@Entity(name="registrant")
 public class Registrant {
 
     @Id
@@ -15,18 +15,18 @@ public class Registrant {
     @Column(name="registrant_id")
     private Long id;
 
-    private Long user_id;
+    private String user_id;
 
     private String name;
 
-    private String file_id;
+    private String file_name;
 
 
     @Builder
-    public Registrant(Long id, Long user_id, String name, String file_id){
+    public Registrant(Long hid, String user_id, String name, String file_name){
         this.id = id;
         this.user_id = user_id;
         this.name = name;
-        this.file_id = file_id;
+        this.file_name = file_name;
     }
 }
