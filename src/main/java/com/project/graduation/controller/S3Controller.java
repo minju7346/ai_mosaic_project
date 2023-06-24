@@ -22,13 +22,26 @@ public class S3Controller {
     @Autowired
     private S3Util s3Util;
 
-    @PostMapping("/upload")
-    public void uploadFile(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/upload-image")
+    public void uploadPhotoFile(@RequestParam("file") MultipartFile file) {
         System.out.println("Upload-" + file);
         try {
             File fileObj = convertMultiPartToFile(file);
             String key = file.getOriginalFilename();
-            s3Util.uploadPhoto(key, fileObj);
+            s3Util.uploadImage(key, fileObj);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @PostMapping("/upload-video")
+    public void uploadVideoFile(@RequestParam("file") MultipartFile file) {
+        System.out.println("Upload-" + file);
+        try {
+            File fileObj = convertMultiPartToFile(file);
+            String key = file.getOriginalFilename();
+            s3Util.uploadVideo(key, fileObj);
         } catch (IOException e) {
             e.printStackTrace();
         }
